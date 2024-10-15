@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Resume Builder</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include jsPDF from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Include html2canvas for better PDF styling -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Advanced Resume Builder</h1>
+        <div class="builder">
+            <form id="resume-form">
+                <!-- Progress Bar -->
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                
+                <!-- Template Selector -->
+                <div class="section">
+                    <label for="template-selector">Choose a Template:</label>
+                    <select id="template-selector">
+                        <option value="template1">Classic</option>
+                        <option value="template2">Modern</option>
+                        <option value="template3">Elegant</option>
+                    </select>
+                </div>
+                
+                <!-- Personal Information -->
+                <div class="section">
+                    <h2>Personal Information</h2>
+                    <label>
+                        Full Name:
+                        <input type="text" id="full-name" placeholder="John Doe" required>
+                    </label>
+                    <label>
+                        Email:
+                        <input type="email" id="email" placeholder="john@example.com" required>
+                    </label>
+                    <label>
+                        Phone:
+                        <input type="tel" id="phone" placeholder="(123) 456-7890" required>
+                    </label>
+                    <!-- Photo Upload -->
+                    <label>
+                        Upload Photo:
+                        <input type="file" id="photo" accept="image/*">
+                    </label>
+                </div>
+                
+                <!-- Education Section -->
+                <div class="section" id="education-section">
+                    <h2>Education</h2>
+                    <div class="education-entry">
+                        <label>
+                            School:
+                            <input type="text" class="school" placeholder="University Name" required>
+                        </label>
+                        <label>
+                            Degree:
+                            <input type="text" class="degree" placeholder="Bachelor of Science" required>
+                        </label>
+                        <label>
+                            Graduation Year:
+                            <input type="number" class="graduation-year" placeholder="2024" required>
+                        </label>
+                        <button type="button" class="remove-education">Remove</button>
+                    </div>
+                    <button type="button" id="add-education">Add Education</button>
+                </div>
+                
+                <!-- Experience Section -->
+                <div class="section" id="experience-section">
+                    <h2>Experience</h2>
+                    <div class="experience-entry">
+                        <label>
+                            Company:
+                            <input type="text" class="company" placeholder="Company Name" required>
+                        </label>
+                        <label>
+                            Role:
+                            <input type="text" class="role" placeholder="Software Engineer" required>
+                        </label>
+                        <label>
+                            Years:
+                            <input type="text" class="years" placeholder="2018 - 2024" required>
+                        </label>
+                        <button type="button" class="remove-experience">Remove</button>
+                    </div>
+                    <button type="button" id="add-experience">Add Experience</button>
+                </div>
+                
+                <!-- Skills Section -->
+                <div class="section" id="skills-section">
+                    <h2>Skills</h2>
+                    <div class="skills-entry">
+                        <label>
+                            Skill:
+                            <input type="text" class="skill" placeholder="JavaScript" required>
+                        </label>
+                        <button type="button" class="remove-skill">Remove</button>
+                    </div>
+                    <button type="button" id="add-skill">Add Skill</button>
+                </div>
+                
+                <!-- Submit, Download, and Clear Buttons -->
+                <div class="section buttons-section">
+                    <button type="submit">Update Resume</button>
+                    <button type="button" id="download-pdf">Download as PDF</button>
+                    <button type="button" id="clear-form">Clear Form</button>
+                </div>
+            </form>
+            
+            <!-- Resume Preview -->
+            <div class="resume-preview template1" id="resume-preview">
+                <h2>Resume Preview</h2>
+                <hr>
+                <!-- Profile Photo -->
+                <div class="profile-photo-container">
+                    <img src="assets/profile-circle-svgrepo-com.svg" alt="Profile Photo" id="preview-photo">
+                </div>
+                <h3 id="preview-name">John Doe</h3>
+                <p id="preview-email">john@example.com | (123) 456-7890</p>
+                
+                <h4>Education</h4>
+                <div id="preview-education">
+                    <p>
+                        <strong>Bachelor of Science</strong> from <span>University Name</span>, <span>2024</span>
+                    </p>
+                </div>
+                
+                <h4>Experience</h4>
+                <div id="preview-experience">
+                    <p>
+                        <strong>Software Engineer</strong> at <span>Company Name</span> (<span>2018 - 2024</span>)
+                    </p>
+                </div>
+                
+                <h4>Skills</h4>
+                <ul id="preview-skills">
+                    <li>JavaScript</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
